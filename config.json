@@ -1,0 +1,63 @@
+{
+    "chains": [
+        {
+            "id": "sui_testnet",
+            "adapter_type": "sui",
+            "name": "Sui Testnet",
+            "rpc_url": "https://fullnode.testnet.sui.io:443",
+            "bridge_address": "0x123456789",
+            "event_filters": [
+                {
+                    "name": "MessageEvent",
+                    "handler": "handle_message_event"
+                }
+            ]
+        },
+        {
+            "id": "rooch_testnet",
+            "adapter_type": "rooch",
+            "name": "Rooch Testnet",
+            "rpc_url": "https://testnet.rooch.network",
+            "bridge_address": "0x987654321",
+            "event_filters": [
+                {
+                    "name": "MessageEvent",
+                    "handler": "handle_message_event"
+                }
+            ]
+        }
+    ],
+    "assets": [
+        {
+            "name": "SUI",
+            "native_chain": "sui_testnet",
+            "type_": "coin",
+            "decimals": 9,
+            "mappings": {
+                "rooch_testnet": "0xabcdef123::wrapped_sui::WSUI"
+            }
+        },
+        {
+            "name": "ROOCH",
+            "native_chain": "rooch_testnet",
+            "type_": "coin",
+            "decimals": 8,
+            "mappings": {
+                "sui_testnet": "0x123abcdef::wrapped_rooch::WROOCH"
+            }
+        }
+    ],
+    "validators": [
+        {
+            "address": "0xvalidator1",
+            "public_key": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+            "weight": 1,
+            "chains": ["sui_testnet", "rooch_testnet"]
+        }
+    ],
+    "relayer": {
+        "poll_interval": 5,
+        "max_retries": 3,
+        "retry_delay": 2
+    }
+} 

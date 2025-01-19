@@ -1,0 +1,39 @@
+[workspace]
+resolver = "2"
+members = [
+    "packages/bridge-core",
+    "packages/bridge-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.dependencies]
+async-trait = "0.1"
+tokio = { version = "1.0", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+log = "0.4"
+anyhow = "1.0"
+hex = "0.4"
+bcs = "0.1"
+reqwest = { version = "0.11", features = ["json"] }
+toml = "0.8"
+move-core-types = { git = "https://github.com/mystenlabs/sui", package = "move-core-types" }
+sui-sdk = { git = "https://github.com/mystenlabs/sui", package = "sui-sdk"}
+sui-keys = { git = "https://github.com/mystenlabs/sui", package = "sui-keys"}
+shared-crypto = { git = "https://github.com/mystenlabs/sui", package = "shared-crypto"}
+sui-config = { git = "https://github.com/mystenlabs/sui", package = "sui-config"}
+sui-types = { git = "https://github.com/mystenlabs/sui", package = "sui-types"}
+sui-json-rpc-types = { git = "https://github.com/mystenlabs/sui", package = "sui-json-rpc-types"}
+sui-transaction-builder = { git = "https://github.com/mystenlabs/sui", package = "sui-transaction-builder"}
+unicode-width = "=0.1.11"
+tabled = "=0.12.2"
+
+# Dev dependencies
+mockall = "0.11"
+mockito = "1.0"
+tokio-test = "0.4" 
